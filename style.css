@@ -65,7 +65,7 @@ button {
   background-color: rgba(29, 211, 175, 0.7);
   font-size: 25px;
   font-weight: 600;
-  height: 64px;
+  height: 62px;
   width: 75px;
   border-radius: 5px;
   &:hover {
