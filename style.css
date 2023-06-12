@@ -9,15 +9,15 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 50px;
-  /* background-color: #e1e3ea; */
+  background-color: #e1e3ea;
   height: 100vh;
 
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     to right,
     rgba(255, 0, 0, 0),
     rgb(214, 151, 151),
     rgba(255, 0, 0, 0)
-  );
+  ); */
 }
 .container {
   width: 70%;
