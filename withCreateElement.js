@@ -62,7 +62,8 @@ ul.addEventListener("click", (e) => {
   //   //? ilgili li elementinde checked adinda bir class yoksa ekle
   //   e.target.parentElement.classList.add("checked");
   // }
-  if (e.target.parentElement.classList.toggle("checked")) {
+  if (e.target.classList.contains("fa-check")) {
+    e.target.parentElement.classList.toggle("checked");
   }
 });
 window.addEventListener("load", () => {
