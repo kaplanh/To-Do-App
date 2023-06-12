@@ -1,33 +1,36 @@
 @import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap");
-
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: "Roboto", sans-serif;
   display: flex;
   justify-content: center;
   margin-top: 50px;
-  background-color: #e1e3ea;
+  /* background-color: #e1e3ea; */
   height: 100vh;
-}
 
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 0, 0, 0),
+    rgb(214, 151, 151),
+    rgba(255, 0, 0, 0)
+  );
+}
 .container {
-  width: 60%;
+  width: 70%;
   > h1 {
     color: white;
     font-size: 40px;
-    padding: 20px 0;
+    padding: 10px 0;
     text-align: center;
     border-radius: 0.5rem 0.5rem 0 0;
     background-color: #de3f53;
     font-family: "Rajdhani", sans-serif;
   }
 }
-
 @media screen and (max-width: 768px) {
   .container {
     width: 95%;
@@ -38,7 +41,6 @@ body {
     width: 100%;
   }
 }
-
 section {
   width: 100%;
   background-color: #262e4c;
@@ -49,22 +51,21 @@ input {
   background-color: rgba(60, 73, 121, 1);
   font-size: 18px;
   color: white;
-  padding: 20px;
+  padding: 5px;
   width: calc(100% - 80px);
-  height: 50px;
+  height: 40px;
   border-radius: 5px;
   &:hover {
     background-color: rgba(0, 0, 0, 0.9);
   }
 }
-
 button {
   border: none;
   color: white;
   background-color: rgba(29, 211, 175, 0.7);
   font-size: 25px;
   font-weight: 600;
-  height: 52px;
+  height: 42px;
   width: 75px;
   border-radius: 5px;
   &:hover {
@@ -76,7 +77,6 @@ ul {
   color: #e0e0e0;
   padding: 0;
 }
-
 ul li {
   padding: 1px;
   background-color: #262e4c;
@@ -94,23 +94,21 @@ li i {
   &:hover {
     opacity: 0.8;
     transform: scale(1.5);
-    
   }
 }
-
 li span {
-  flex:auto;
+  flex: auto;
   padding: 0.2rem;
 }
-
 li.checked > .fa-check {
   color: #00e676;
   /* background-color: #1dd2af; */
 }
 li.checked > span {
   /* color: rgb(41, 41, 41); */
-
   text-decoration: line-through;
+  text-decoration-color: #ea0a0a;
+  text-decoration-thickness: 3px;
   font-weight: normal;
 }
 @media screen and (max-width: 576px) {
