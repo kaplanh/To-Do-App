@@ -5,7 +5,7 @@ const ul = document.querySelector("ul");
 
 //?functions
 function domaYaz({ id, text }) {
-  // const { id, text, flag } = task;
+  // const { id, text} = task;
   ul.innerHTML += ` <li id=${id} class =''> <i class="fa fa-check"></i><span>${text}</span><i class="fa fa-trash"></i></li>`;
 }
 
@@ -42,23 +42,8 @@ ul.addEventListener("click", (e) => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
     e.target.parentElement.remove();
   }
-  // if (e.target.classList.contains("fa-check")) {
-  //     tasks.map((task, index) => {
-  //         if (task.id == id) {
-  //             tasks[index].flag = !tasks[index].flag;
-  //         }
-
-  //     })
-  // };
 
   localStorage.setItem("tasks", JSON.stringify(tasks));
-
-  //  if (e.target.parentElement.classList.contains("checked")) {
-  //   e.target.parentElement.classList.remove("checked");
-  // } else {
-  //   //? ilgili li elementinde checked adinda bir class yoksa ekle
-  //   e.target.parentElement.classList.add("checked");
-  // }
 
   if (e.target.parentElement.classList.toggle("checked")) {
   }
