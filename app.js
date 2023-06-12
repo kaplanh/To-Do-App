@@ -1,108 +1,72 @@
-// *1 - Uygulama yüklendiğinde tüm görevleri localStorage'dan almak icin
-window.onload = loadTasks;
+//?Selectors
+const input = document.querySelector("#input");
+const btn = document.getElementById("btn");
+const ul = document.querySelector("ul");
 
-// addTask fonksiyonunu çağırmak için forma bir submit event listener(olay dinleyicisi)eklemek icin 
-document.querySelector("form").addEventListener("submit", (e) => {
-  e.preventDefault();
-  addTask();
+//?functions
+function domaYaz({ id, text }) {
+  // const { id, text, flag } = task;
+  ul.innerHTML += ` <li id=${id} class =''> <i class="fa fa-check"></i><span>${text}</span><i class="fa fa-trash"></i></li>`;
+}
+
+let tasks = [];
+
+btn.addEventListener("click", () => {
+  if (!input.value) {
+    alert("Please enter your todo...");
+  } else {
+    const task = {
+      id: new Date().getTime(), //Date.now()
+      text: input.value,
+    };
+    tasks.push(task);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    domaYaz(task);
+    input.value = "";
+    input.focus();
+  }
+  console.log(tasks);
 });
 
-function loadTasks() {
-  if (localStorage.getItem("tasks") == null) return;
-  let tasks = Array.from(JSON.parse(localStorage.getItem("tasks")));
-  tasks.forEach((task) => {
-    const list = document.querySelector("ul");
-    const li = document.createElement("li");
-    li.innerHTML = `<input type="checkbox" onclick="taskComplete(this)" class="check" ${
-      task.completed ? "checked" : ""
-    }>
-          <input type="text" value="${task.task}" class="task ${
-      task.completed ? "completed" : ""
-    }" onfocus="getCurrentTask(this)" onblur="editTask(this)">
-          <i class="fa fa-trash" onclick="removeTask(this)"></i>`;
-    list.insertBefore(li, list.children[0]);
-  });
-}
-
-function addTask() {
-  const task = document.querySelector("form input");
-  const list = document.querySelector("ul");
-  if (task.value === "") {
-    alert("Please add some task!");
-    return false;
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    btn.click();
   }
- 
-  if (document.querySelector(`input[value="${task.value}"]`)) {
-    alert("Task already exist!");
-    return false;
+});
+
+ul.addEventListener("click", (e) => {
+  const id = e.target.parentElement.id;
+  if (e.target.classList.contains("fa-trash")) {
+    tasks = tasks.filter((task) => task.id != id); //?cöp kutusuna tiklanan li nin arrayden atilma islemi
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    e.target.parentElement.remove();
   }
+  // if (e.target.classList.contains("fa-check")) {
+  //     tasks.map((task, index) => {
+  //         if (task.id == id) {
+  //             tasks[index].flag = !tasks[index].flag;
+  //         }
 
-  localStorage.setItem(
-    "tasks",
-    JSON.stringify([
-      ...JSON.parse(localStorage.getItem("tasks") || "[]"),
-      { task: task.value, completed: false },
-    ])
-  );
+  //     })
+  // };
 
-  const li = document.createElement("li");
-  li.innerHTML = `<input type="checkbox" onclick="taskComplete(this)" class="check">
-      <input type="text" value="${task.value}" class="task" onfocus="getCurrentTask(this)" onblur="editTask(this)">
-      <i class="fa fa-trash" onclick="removeTask(this)"></i>`;
-  list.insertBefore(li, list.children[0]);
-  task.value = "";
-}
-
-function taskComplete(event) {
-  let tasks = Array.from(JSON.parse(localStorage.getItem("tasks")));
-  tasks.forEach((task) => {
-    if (task.task === event.nextElementSibling.value) {
-      task.completed = !task.completed;
-    }
-  });
   localStorage.setItem("tasks", JSON.stringify(tasks));
-  event.nextElementSibling.classList.toggle("completed");
-}
 
-function removeTask(event) {
-  let tasks = Array.from(JSON.parse(localStorage.getItem("tasks")));
-  tasks.forEach((task) => {
-    if (task.task === event.parentNode.children[1].value) {
-      tasks.splice(tasks.indexOf(task), 1);
-    }
-  });
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-  event.parentElement.remove();
-}
+  //  if (e.target.parentElement.classList.contains("checked")) {
+  //   e.target.parentElement.classList.remove("checked");
+  // } else {
+  //   //? ilgili li elementinde checked adinda bir class yoksa ekle
+  //   e.target.parentElement.classList.add("checked");
+  // }
 
-const currentTask = null;
-
-function getCurrentTask(event) {
-  currentTask = event.value;
-}
-
-function editTask(event) {
-  let tasks = Array.from(JSON.parse(localStorage.getItem("tasks")));
-
-  if (event.value === "") {
-    alert("Task is empty!");
-    event.value = currentTask;
-    return;
+  if (e.target.parentElement.classList.toggle("checked")) {
   }
-  // task already exist
+});
+
+window.addEventListener("load", () => {
+  tasks = JSON.parse(localStorage.getItem("tasks")) || [];
   tasks.forEach((task) => {
-    if (task.task === event.value) {
-      alert("Task already exist!");
-      event.value = currentTask;
-      return;
-    }
+    domaYaz(task);
   });
-  // update task
-  tasks.forEach((task) => {
-    if (task.task === currentTask) {
-      task.task = event.value;
-    }
-  });
-  // update local storage
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-}
+});

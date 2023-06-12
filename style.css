@@ -6,119 +6,115 @@
   box-sizing: border-box;
 }
 
-.container {
+body {
+  font-family: "Roboto", sans-serif;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* !divin icindeki elemanlari ortalamak istiyorsan üstteki 3 lüyü kullanabilirsin */
-  padding-top: 50px;
+  justify-content: center;
+  margin-top: 50px;
   background-color: #e1e3ea;
   height: 100vh;
-  font-family: sans-serif;
 }
 
-.app {
-  width: 60%;
-}
-
-@media (max-width:768px) {
-  .app {
-    width: 90%;
+.container {
+  width: 70%;
+  > h1 {
+    color: white;
+    font-size: 40px;
+    padding: 10px 0;
+    text-align: center;
+    border-radius: 0.5rem 0.5rem 0 0;
+    background-color: #de3f53;
+    font-family: "Rajdhani", sans-serif;
   }
 }
-/* !class'i app olan;  h1,input ve buton divini icinde bulunduran divin genisliginin 768 pikselden büyük cihaz boyutu için %60 ve 768 pikselden küçük cihaz boyutu için %90 anlamina gelir  */
 
-.app h1 {
-  color: white;
-  font-size: 40px;
-  padding: 10px 0;
-  text-align: center;
-  border-radius: .5rem .5rem 0 0;
-  background-color: #de3f53;
-  font-family: "Rajdhani", sans-serif;
+@media screen and (max-width: 768px) {
+  .container {
+    width: 95%;
+  }
+}
+@media screen and (max-width: 470px) {
+  .container {
+    width: 100%;
+  }
 }
 
-.app form {
-  display: flex;
+section {
   width: 100%;
   background-color: #262e4c;
 }
-
-.app form input {
+input {
   border: none;
-  background-color: #3c4979;
+  outline: none;
+  background-color: rgba(60, 73, 121, 1);
   font-size: 18px;
   color: white;
-  padding: 10px;
-  width: 90%;/*parent div in 90% sini alir*/
+  padding: 5px;
+  width: calc(100% - 80px);
+  height: 40px;
+  border-radius: 5px;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
 }
 
-
-.app form button {
+button {
   border: none;
   color: white;
-  background-color: #1dd2af;
+  background-color: rgba(29, 211, 175, 0.7);
   font-size: 25px;
   font-weight: 600;
   height: 42px;
-  width: 10%;
+  width: 75px;
+  border-radius: 5px;
+  &:hover {
+    background-color: rgba(0, 255, 0, 1);
+  }
 }
-/* *Her task elementi-öğesi, içinde 3 farklı öğe içerir.
- *solda checkbox
- *ortada üstte girilen task
- *sagda trash button(cöp kutusu) */
-
-.app ul {
-  list-style: none;/*! <ul> etiketini seçip list-style: none.ile varsayılan madde işaretlerini kaldıriyorum */
+ul {
+  list-style: none;
   color: #e0e0e0;
   padding: 0;
 }
 
-.app ul li {
-  padding: 10px;
+ul li {
+  padding: 1px;
   background-color: #262e4c;
   border-bottom: 1px solid #3a4674;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-
-.check {
-  width: 0.8em;
-  height: 0.8em;
+li i {
+  padding: 1rem;
+  color: #ea0a0a;
   cursor: pointer;
-  border-radius: 50%;
-  background-color: white;
-  border: 1px solid rgb(255, 255, 255);
-  -webkit-appearance:none ;
-/*! appearance: checkbox a cizilen seklin disina cikip benim tasarladigim sekilde gözükmesi icin (buttonun circle seklinde gözükmesini bu sekilde sagladim) */
-/*! -webkit:webkit,-moz:mozilla,-o:oracle kendi browserlari icin ürettikleri ürünleri global olmadigi icin bu sekilde ön ekle cikarmislar */
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  &:hover {
+    opacity: 0.8;
+    transform: scale(1.5);
+    
+  }
 }
 
-.check:checked {
-  background-color: #1dd2af;
+li span {
+  flex:auto;
+  padding: 0.2rem;
 }
 
-.task {
-  font-size: 18px;
-  padding: 0 10px;
-  width: fit-content;
-  background: transparent;
-  border: none;
-  color: #fff;
+li.checked > .fa-check {
+  color: #00e676;
+  /* background-color: #1dd2af; */
 }
+li.checked > span {
+  /* color: rgb(41, 41, 41); */
 
-.task:focus {
-  outline: none;
+  text-decoration: line-through;
+  font-weight: normal;
 }
-
-.app ul li i {
-  float: right;
-  cursor: pointer;
-}
-
-.app ul li i:hover {
-  color: rgb(255, 82, 82);
-}
-
-.completed {
-  color: rgba(192, 192, 192, 0.8);
-  text-decoration: line-through;/* !bununla text'in üzerini ciziyoruz */
+@media screen and (max-width: 576px) {
+  li span {
+    font-size: 0.8rem;
+  }
 }
