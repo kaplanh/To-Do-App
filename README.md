@@ -18,8 +18,9 @@ Todo App (folder)
 |
 |----readme.md                        
 |----index.html
+|----style.css
 |----app.js
-|----createElement.js 
+|----withCreateElement.js 
 ``` 
 
 
