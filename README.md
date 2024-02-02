@@ -27,6 +27,21 @@ Todo App (folder)
 ### At the end of the project, the following topics are to be covered;
 
 - HTML
+  - font-awesome
+    ~~~css
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    ~~~
+  - entites
+    ~~~css
+    &plus
+    https://www.w3schools.com/charsets/ref_html_entities_4.asp
+    ~~~ 
   - nth-child()
    ```
     ul li:nth-child(even) {
