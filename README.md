@@ -43,25 +43,16 @@ Todo App (folder)
     &copy;
     
     ~~~ 
-  - nth-child()
-   ```
-    ul li:nth-child(even) {
-    background: #dde6f5;
-  }
-   
-  ```
+  
 - CSS
-  - overflow 
+  - [google fonts]("https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap")
+   ~~~
+   @import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap");
+   ~~~ 
   - @media query
 
- ```
-@media screen and (max-width: 576px) {
-    li p {
-        font-size: 0.8rem;
-    }
-}
-  ```
   
+
   
 - JS
   - DOM Manipulations
@@ -73,6 +64,8 @@ Todo App (folder)
   - querySelector
   - querySelectorAll
   - const productList = document.querySelector("div.main__product-painel"); //?basina div yazarak belirtirsek performans acisindan daha hizli olur
+  -  Date() object[^1]
+    [^1];id: new Date().getTime(), //Date.now()
     
   - Events
     - click
