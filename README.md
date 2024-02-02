@@ -65,7 +65,7 @@ Todo App (folder)
   - querySelectorAll
   - const productList = document.querySelector("div.main__product-painel"); //?basina div yazarak belirtirsek performans acisindan daha hizli olur
   -  Date() object [^1]
-    [^1];id: new Date().getTime(), //Date.now()
+    [^1]: id: new Date().getTime(), //Date.now()
     
   - Events
     - click
