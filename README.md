@@ -37,10 +37,11 @@ Todo App (folder)
       referrerpolicy="no-referrer"
     />
     ~~~
-  - entites
+  - [html entities](https://www.w3schools.com/charsets/ref_html_entities_4.asp)
     ~~~css
-    &plus
-    https://www.w3schools.com/charsets/ref_html_entities_4.asp
+    &plus;
+    &copy;
+    
     ~~~ 
   - nth-child()
    ```
