@@ -65,7 +65,7 @@ Todo App (folder)
   - querySelectorAll
   - const productList = document.querySelector("div.main__product-painel"); //?basina div yazarak belirtirsek performans acisindan daha hizli olur
   -  Date() object [^1]
-    [^1]: id: new Date().getTime(), //Date.now()
+    [^1]: id: new Date().getTime(), //Date.now() anlik zamani alip unique id yapmak icin
     
   - Events
     - click
@@ -88,12 +88,16 @@ Todo App (folder)
     - e.target.previousElementSibling.innerText++;
     - firstElementChild
     - children
+    - prepend [^2]
+      [^2]:li.prepend(iCheck);
+    - appendChild [^3]
+      [^3]:span.appendChild(content);
    
   - localStorage 
     ```
-     - localStorage.setItem("todos", JSON.stringify(todos));
+     - localStorage.setItem("tasks", JSON.stringify(tasks));
  
-     - let todos = JSON.parse(localStorage.getItem("todos")) || [];
+     - tasks = JSON.parse(localStorage.getItem("tasks")) || [];
      
     ```
  
@@ -101,19 +105,12 @@ Todo App (folder)
  
   
   - Array Methods
-  - forEach() & map()
+  - filter()
      ```
 
-     function renderSavedTodos() {
-    todos.forEach((todo) => {
-        createListElement(todo);
-    });
+    tasks = tasks.filter((task) => task.id != id);
     }
-     todos.map((todo, index) => {
-            if (todo.id == id) {
-                todos[index].isDone = !todos[index].isDone;
-            }
-        });
+  
     ```
   
 
